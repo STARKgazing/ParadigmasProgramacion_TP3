@@ -1,31 +1,27 @@
-const verTarea = require("./verTarea");
-const buscarTarea = require("./buscarTarea");
-const agregarTarea = require("./agregarTarea");
+import { verTareas } from "./views/verTarea";
+import { buscarTarea } from "./views/buscarTarea";
+import { agregarTarea } from "./views/agregarTarea";
 
-const readline = require("readline");
+import * as readline from "readline";
 
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
-
 function mainMenu(): void {
-
-    console.log("=== TO DO LIST ===");
+    console.log("\n=== TO DO LIST ===");
     console.log("1. Ver mis tareas");
     console.log("2. Buscar una Tarea");
     console.log("3. Agregar una tarea");
     console.log("0. Salir");
 
     rl.question("Choose an option: ", (answer: string) => {
-
         const option: number = Number(answer);
 
         switch (option) {
-
             case 1:
-                verTarea(rl, mainMenu);
+                verTareas(rl, mainMenu);
                 break;
 
             case 2:
@@ -42,13 +38,11 @@ function mainMenu(): void {
                 break;
 
             default:
-                console.log("Opcion Invalida.");
+                console.log("Opción inválida.");
                 mainMenu();
         }
     });
 }
 
-
 mainMenu();
-export {};
 
